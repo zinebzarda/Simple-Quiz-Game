@@ -6,7 +6,8 @@
   box-sizing: border-box;
 }
 body {
-  background: url(images/background.jpg) no-repeat top right/cover;
+  background: url(images/backround.png) no-repeat top right/cover;
+  
 }
 header {
   display: flex;
@@ -16,9 +17,6 @@ header {
 .welcome {
   width: 200px;
   height: 200px;
-}
-
-header > button {
 }
 section {
   display: flex;
@@ -36,6 +34,7 @@ section > .app {
   max-width: 600px;
   border-radius: 10px;
   margin: 100px auto 0;
+  box-shadow: #222 0px 5px 15px;
 }
 .app > h1 {
   font-size: 30px;
@@ -49,14 +48,14 @@ section > .app {
 .quiz > h2 {
   margin-left: 20px;
   font-size: 18px;
-  color: orange;
+  color: rgb(255, 255, 255);
   font-weight: 600;
   margin-top: 15px;
 }
 .btn {
   background-color: #ffffff;
   color: #222;
-  font-weight: 500;
+  font-weight: 700;
   width: 96%;
   height: 60px;
   border: 2px solid #c200ab;
@@ -66,6 +65,7 @@ section > .app {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s;
+  box-shadow: #222 0px 5px 5px;
 }
 .btn:hover {
   background-color: #ff03ff;
@@ -78,6 +78,15 @@ section > .app {
   width: 280px;
   height: 60px;
   margin: 20px 160px;
+  font-weight: 700;
   font-size: 20px;
   cursor: pointer;
+}
+.box{
+ display: flex;
+ justify-content:flex-start;
+ gap: 0px 100px;
+}
+.money{
+    margin-right: 200px;
 }
