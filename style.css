@@ -1,48 +1,83 @@
-*{
-    padding: 0%;
-    margin: 0%;
-    text-decoration: none;
+* {
+  padding: 0%;
+  margin: 0%;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
-body{
-    background: url(images/background.jpg) no-repeat top right/cover;
+body {
+  background: url(images/background.jpg) no-repeat top right/cover;
 }
-header{
-    display: flex;
-    justify-content: space-between;
-}
-
-.welcome{
-    width: 200px;
-    height: 200px;
+header {
+  display: flex;
+  justify-content: space-between;
 }
 
-header > button{
-    background-color: #c700f9;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    width: 80px;
-    height: 50px;
-    margin: 20px 20px;
+.welcome {
+  width: 200px;
+  height: 200px;
 }
-section{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    
-}
-section > div{
-    background-color:rgb(204, 84, 255);
-    width: 400px;
-    height: 370px;
-    border-radius: 5%;
-    margin: 80px;
-  
-    
-}
-section > img{
-    width: 300px;
-    height: 300px;
-    margin: -160px;
 
+header > button {
+}
+section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+section > img {
+  width: 300px;
+  height: 300px;
+  margin: -155px;
+}
+section > .app {
+  background-color: rgb(204, 84, 255);
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  margin: 100px auto 0;
+}
+.app > h1 {
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 33px;
+  margin-top: 25px;
+}
+.quiz > h2 {
+  margin-left: 20px;
+  font-size: 18px;
+  color: orange;
+  font-weight: 600;
+  margin-top: 15px;
+}
+.btn {
+  background-color: #ffffff;
+  color: #222;
+  font-weight: 500;
+  width: 96%;
+  height: 60px;
+  border: 2px solid #c200ab;
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover {
+  background-color: #ff03ff;
+}
+#next {
+  background-color: #ec00f9;
+  border: 3px solid #ff03ff;
+  border-radius: 5%;
+  color: #fff;
+  width: 280px;
+  height: 60px;
+  margin: 20px 160px;
+  font-size: 20px;
+  cursor: pointer;
 }
