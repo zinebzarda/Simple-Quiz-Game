@@ -67,8 +67,12 @@ section > .app {
   transition: all 0.3s;
   box-shadow: #222 0px 5px 5px;
 }
-.btn:hover {
-  background-color: #ff03ff;
+.btn:hover:not([disabled]){
+  background: #ff03ff;
+  color: #fff;
+}
+.btn:disabled{
+    cursor: no-drop;
 }
 #next {
   background-color: #ec00f9;
@@ -89,4 +93,11 @@ section > .app {
 }
 .money{
     margin-right: 200px;
+}
+.correct{
+    background-color: aquamarine;
+    
+}
+.incorrect{
+    background: rgb(254, 127, 127);
 }
