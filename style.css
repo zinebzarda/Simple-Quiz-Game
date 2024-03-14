@@ -5,37 +5,35 @@
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
+
 body {
   background: url(images/backround.png) no-repeat top right/cover;
-  
 }
+
 header {
   display: flex;
   justify-content: space-between;
 }
 
-.welcome {
-  width: 200px;
-  height: 200px;
-}
 section {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
+
 section > img {
   width: 300px;
   height: 300px;
-  margin: -155px;
 }
+
 section > .app {
   background-color: rgb(204, 84, 255);
   width: 90%;
   max-width: 600px;
   border-radius: 10px;
-  margin: 100px auto 0;
   box-shadow: #222 0px 5px 15px;
 }
+
 .app > h1 {
   font-size: 30px;
   text-align: center;
@@ -45,6 +43,7 @@ section > .app {
   padding-bottom: 33px;
   margin-top: 25px;
 }
+
 .quiz > h2 {
   margin-left: 20px;
   font-size: 18px;
@@ -52,6 +51,7 @@ section > .app {
   font-weight: 600;
   margin-top: 15px;
 }
+
 .btn {
   background-color: #ffffff;
   color: #222;
@@ -60,20 +60,23 @@ section > .app {
   height: 60px;
   border: 2px solid #c200ab;
   padding: 10px;
-  margin: 10px;
+  margin: 10px 13px;
   text-align: left;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: #222 0px 5px 5px;
 }
-.btn:hover:not([disabled]){
+
+.btn:hover:not([disabled]) {
   background: #ff03ff;
   color: #fff;
 }
-.btn:disabled{
-    cursor: no-drop;
+
+.btn:disabled {
+  cursor: no-drop;
 }
+
 #next {
   background-color: #ec00f9;
   border: 3px solid #ff03ff;
@@ -81,23 +84,22 @@ section > .app {
   color: #fff;
   width: 280px;
   height: 60px;
-  margin: 20px 160px;
   font-weight: 700;
   font-size: 20px;
   cursor: pointer;
+  margin: 10px auto;
 }
-.box{
- display: flex;
- justify-content:flex-start;
- gap: 0px 100px;
+
+.box {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0px 100px;
+  margin-right: 20px;
 }
-.money{
-    margin-right: 200px;
+.correct {
+  background-color: aquamarine;
 }
-.correct{
-    background-color: aquamarine;
-    
-}
-.incorrect{
-    background: rgb(254, 127, 127);
+
+.incorrect {
+  background: rgb(254, 127, 127);
 }

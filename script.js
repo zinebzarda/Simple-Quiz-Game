@@ -1,3 +1,5 @@
+
+//-Création d'un tableau d'objets
 const questions = [
   {
     question: "Quel mot-clé est utilisé pour déclarer une variable constante en Java?",
@@ -66,7 +68,7 @@ function showQuestion(){
         }
         button.addEventListener("click", selectAnswer)
     });
-
+  }
  function resetNext(){
     next.style.display = "none";
     while(answerButtons.firstChild){
@@ -80,7 +82,8 @@ function showQuestion(){
     const isCorrect = selectedBtn.dataset.correct === "true";
     if(isCorrect){
         selectedBtn.classList.add("correct");
-    }else{
+    score++;
+      }else{
         selectedBtn.classList.add("incorrect");
     }
     Array.from(answerButtons.children).forEach(button => {
@@ -91,5 +94,29 @@ function showQuestion(){
     });
     next.style.display = "block";
  }   
+
+function showScore(){
+  resetNext();
+  question.innerHTML =`you scored ${score} out of ${questions.length}!`;
+  next.innerHTML = "Play Again";
+  next.style.display = "block";
 }
+
+function handNext(){
+  QuestionIndex++;
+  if(QuestionIndex < questions.length ){
+    showQuestion();
+  }else{
+    showScore();
+  }
+}
+next.addEventListener("click", ()=>{
+  if(QuestionIndex < questions.length){
+    handNext();
+  }else{
+    startQuiz();
+  }
+
+});
 startQuiz();
+
