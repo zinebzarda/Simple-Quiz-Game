@@ -1,122 +1,102 @@
-
-//-Création d'un tableau d'objets
-const questions = [
+const quiz = [
   {
-    question: "Quel mot-clé est utilisé pour déclarer une variable constante en Java?",
-    answers: [
-      { text: "static", correct: false },
-      { text: "final", correct: true },
-      { text: "const", correct: false },
-      { text: "volatile", correct: false },
+    Question: "Quel mot-clé est utilisé pour déclarer une variable constante en Java?",
+    Option: [
+      "static",
+      "final",
+      "const",
+      "volatile"
     ],
+    Correcte: "final"
   },
   {
-    question: "Quelle interface est utilisée pour trier les éléments dans un tableau en Java?",
-    answers: [
-      { text: "Sorter", correct: false },
-      { text: "Sortable", correct: false },
-      { text: "Comparable", correct: false },
-      { text: "Comparator", correct: true },
+    Question: "Quelle interface est utilisée pour trier les éléments dans un tableau en Java?",
+    Option: [
+      "Sorter",
+      "Sortable",
+      "Comparable",
+      "Comparator"
     ],
+    Correcte: "Comparator"
   },
   {
-    question: "Quelle est la taille de base d'un type de données int en Java?",
-    answers: [
-      { text: " 4 bits", correct: false },
-      { text: "8 bits", correct: false },
-      { text: "16 bits", correct: false },
-      { text: " 32 bits", correct: true },
+    Question: "Quelle est la taille de base d'un type de données int en Java?",
+    Option: [
+      "4 bits",
+      "8 bits",
+      "16 bits",
+      "32 bits"
     ],
+    Correcte: "32 bits"
   },
   {
-    question: "Quelle méthode est utilisée pour démarrer l'exécution d'un thread en Java?",
-    answers: [
-      { text: "start()", correct: true },
-      { text: "run()", correct: false },
-      { text: "execute()", correct: false },
-      { text: "begin()", correct: false },
+    Question: "Quelle méthode est utilisée pour démarrer l'exécution d'un thread en Java?",
+    Option: [
+      "start()",
+      "run()",
+      "execute()",
+      "begin()"
     ],
-  },
+    Correcte: "start()"
+  }
 ];
-const question = document.getElementById("question");
-const answerButtons = document.getElementById("answer");
+const questionElement = document.getElementById("question");
+const optionsElement = document.getElementById("answer");
 const next = document.getElementById("next");
+let currentQuestion = 0;
+let score = 0;
+let i=0;
 
-let QuestionIndex =0;
-let score =0;
-
-function startQuiz(){
-     QuestionIndex =0;
-     score =0; 
-     next.innerHTML = "Next";
-     showQuestion();
-}
 function showQuestion(){
-    resetNext() ;
-    let Quest = questions[QuestionIndex];
-    let questionNo = QuestionIndex + 1;
-    question.innerHTML = questionNo + ". " + Quest.
-    question;
-   
-    Quest.answers.forEach(answer => {
-        const button = document.createElement("button");
-        button.innerHTML = answer.text;
-        button.classList.add("btn");
-        answerButtons.appendChild(button);
-        if(answer.correct){
-            button.dataset.correct = answer.correct;
-        }
-        button.addEventListener("click", selectAnswer)
-    });
-  }
- function resetNext(){
-    next.style.display = "none";
-    while(answerButtons.firstChild){
-        answerButtons.removeChild(answerButtons.firstChild);
-
-    }
- }
- function selectAnswer(e){
-    const selectedBtn = e.target;
-    //console.log(selectedBtn.dataset);
-    const isCorrect = selectedBtn.dataset.correct === "true";
-    if(isCorrect){
-        selectedBtn.classList.add("correct");
-    score++;
-      }else{
-        selectedBtn.classList.add("incorrect");
-    }
-    Array.from(answerButtons.children).forEach(button => {
-        if(button.dataset.correct === "true"){
-            button.classList.add("correct");
-        }
-        button.disabled = true;
-    });
-    next.style.display = "block";
- }   
-
-function showScore(){
-  resetNext();
-  question.innerHTML =`you scored ${score} out of ${questions.length}!`;
-  next.innerHTML = "Play Again";
-  next.style.display = "block";
-}
-
-function handNext(){
-  QuestionIndex++;
-  if(QuestionIndex < questions.length ){
-    showQuestion();
-  }else{
+  if(i==quiz.length){
     showScore();
-  }
-}
-next.addEventListener("click", ()=>{
-  if(QuestionIndex < questions.length){
-    handNext();
   }else{
-    startQuiz();
+
+  
+  let questionNo = i + 1;
+  questionElement.innerHTML = questionNo + ". " + quiz[i].Question;
+   // questionElement.innerHTML = quiz[i].Question;
+    for(let j = 0 ; j < quiz[i].Option.length ; j++){
+      optionsElement.innerHTML += 
+      `
+      <button id="btn" class="btn">${quiz[i].Option[j]}</button>
+       `
+    }
   }
 
-});
-startQuiz();
+}
+showQuestion();
 
+
+function startQuiz() {
+  // console.log(i);
+    document.querySelectorAll(".btn").forEach((e)=>{
+        e.addEventListener("click",function(){
+            if(quiz[i].Option.length>0 && i<quiz[i].Option.length ){
+                optionsElement.innerHTML=""
+            }
+            if(this.innerText == quiz[i].Correcte){
+                score +=1;
+              
+            }
+            nextQuestion();
+
+        })
+    })
+
+
+}
+function showScore() {
+  
+    questionElement.innerHTML = `You scored ${score} out of ${quiz.length}!`;
+    optionsElement.innerHTML = `<a href="" >Play Again`;
+}
+
+     startQuiz();
+
+     function nextQuestion(){
+      i++;
+      showQuestion();
+      startQuiz();
+    
+     }
