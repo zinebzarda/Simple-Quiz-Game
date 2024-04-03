@@ -77,7 +77,7 @@ section > .app {
   cursor: no-drop;
 }
 
-a{
+a {
   background-color: #ec00f9;
   border: 3px solid #ff03ff;
   border-radius: 5%;
@@ -87,8 +87,12 @@ a{
   font-weight: 700;
   font-size: 20px;
   cursor: pointer;
-
+  margin: auto; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
 }
+
 
 .box {
   display: flex;
@@ -99,7 +103,9 @@ a{
 .correct {
   background-color: aquamarine;
 }
-
 .incorrect {
   background: rgb(254, 127, 127);
 }
+.congra{
+  height: 100px;
+  }

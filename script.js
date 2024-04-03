@@ -40,63 +40,62 @@ const quiz = [
     Correcte: "start()"
   }
 ];
+
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("answer");
-const next = document.getElementById("next");
 let currentQuestion = 0;
 let score = 0;
-let i=0;
 
-function showQuestion(){
-  if(i==quiz.length){
+function showQuestion() {
+  if (currentQuestion >= quiz.length) {
     showScore();
-  }else{
-
-  
-  let questionNo = i + 1;
-  questionElement.innerHTML = questionNo + ". " + quiz[i].Question;
-   // questionElement.innerHTML = quiz[i].Question;
-    for(let j = 0 ; j < quiz[i].Option.length ; j++){
-      optionsElement.innerHTML += 
-      `
-      <button id="btn" class="btn">${quiz[i].Option[j]}</button>
-       `
-    }
+    return;
   }
 
+  const currentQuiz = quiz[currentQuestion];
+  let questionNo = currentQuestion + 1;
+  questionElement.textContent = questionNo + ". " + currentQuiz.Question;
+  optionsElement.innerHTML = '';
+  currentQuiz.Option.forEach(option => {
+    const button = document.createElement('button');
+    button.textContent = option;
+    button.classList.add('btn');
+    button.addEventListener('click', () => checkAnswer(option));
+    optionsElement.appendChild(button);
+  
+  });
 }
+
+
 showQuestion();
 
+function checkAnswer(selectedOption) {
+  const currentQuiz = quiz[currentQuestion];
+  const correctOption = currentQuiz.Correcte;
 
-function startQuiz() {
-  // console.log(i);
-    document.querySelectorAll(".btn").forEach((e)=>{
-        e.addEventListener("click",function(){
-            if(quiz[i].Option.length>0 && i<quiz[i].Option.length ){
-                optionsElement.innerHTML=""
-            }
-            if(this.innerText == quiz[i].Correcte){
-                score +=1;
-              
-            }
-            nextQuestion();
-
-        })
-    })
-
-
-}
-function showScore() {
+  if (selectedOption === correctOption) {
+    score++;
   
-    questionElement.innerHTML = `You scored ${score} out of ${quiz.length}!`;
-    optionsElement.innerHTML = `<a href="" >Play Again`;
+  }
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(button => {
+    button.disabled = true;
+    if (button.textContent === correctOption) {
+      button.classList.add("correct");
+    } else if (button.textContent === selectedOption) {
+      button.classList.add("incorrect");
+    }
+  });
+
+  currentQuestion++;
+  setTimeout(showQuestion, 1000);
 }
 
-     startQuiz();
+function showScore() {
+  questionElement.innerHTML = `<img class ="congra"src="images/congra.png">
+  Congratulations! Your score: ${score}/${quiz.length}`;
+  optionsElement.innerHTML = '<a href="">Play Again</a>';
+}
 
-     function nextQuestion(){
-      i++;
-      showQuestion();
-      startQuiz();
-    
-     }
+
+showQuestion();
